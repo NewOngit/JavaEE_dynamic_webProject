@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import serviceController.ContentServiceProvider;
 
@@ -29,13 +30,16 @@ public class LogIn extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session =request.getSession();
+		session.setAttribute("username", request.getParameter("username"));
+		session.setAttribute("password", request.getParameter("password"));
 		ContentServiceProvider serviceProvider=new ContentServiceProvider() ;
 		request.setAttribute("content",serviceProvider.getAll());
 		response.getWriter().print(serviceProvider.getAll());
 		
-//			RequestDispatcher dispatcher=request.getRequestDispatcher("homePage.jsp");
-//			dispatcher.forward(request, response);	
-//		
+			RequestDispatcher dispatcher=request.getRequestDispatcher("homePage.jsp");
+			dispatcher.forward(request, response);	
+		
 	}
 
 	/**
