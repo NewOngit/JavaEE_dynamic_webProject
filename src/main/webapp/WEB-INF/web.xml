@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>Controller.LogIn</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ContentDetails</servlet-name>
+  	<display-name>ContentDetails</display-name>
+  	<description></description>
+  	<servlet-class>Controller.ContentDetails</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>LogIn</servlet-name>
   	<url-pattern>/LogIn</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ContentDetails</servlet-name>
+  	<url-pattern>/ContentDetails</url-pattern>
   </servlet-mapping>
 </web-app>
