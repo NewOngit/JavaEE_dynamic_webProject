@@ -32,10 +32,10 @@ public class ContentDetails extends HttpServlet {
 		ContentServiceProvider serviceProvider= new ContentServiceProvider();
 		int id=Integer.parseInt(request.getParameter("id"));
 		request.setAttribute("content", serviceProvider.getElementById(id));
-		response.getWriter().print(serviceProvider.getElementById(id));
-//		RequestDispatcher dispatcher=request.getRequestDispatcher("ContentDetails.jsp");
-//		dispatcher.forward(request, response);
-//		
+		//response.getWriter().print(serviceProvider.getElementById(id));
+		RequestDispatcher dispatcher=request.getRequestDispatcher("contentDetails.jsp");
+		dispatcher.forward(request, response);
+
 	
 	}
 
