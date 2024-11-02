@@ -8,7 +8,7 @@
 <style>
 *{
 padding:0;
-margin:0;}
+margin:0;} 
 div{
     border: 0px ;
     padding-bottom: 10px;
