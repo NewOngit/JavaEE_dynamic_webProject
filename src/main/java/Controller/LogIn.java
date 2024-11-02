@@ -30,16 +30,41 @@ public class LogIn extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String category=request.getParameter("category");
 		HttpSession session =request.getSession();
 		session.setAttribute("username", request.getParameter("username"));
 		session.setAttribute("password", request.getParameter("password"));
+		
 		ContentServiceProvider serviceProvider=new ContentServiceProvider() ;
+		
+		if(category!=null) {
+//			response.getWriter().print("Hey "+request.getParameter("category"));
+			if(category.equals("cart")&&serviceProvider.getCart().size()!=0) {
+				
+				request.setAttribute("content",serviceProvider.getCart());
+				RequestDispatcher dispatcher=request.getRequestDispatcher("homePage.jsp");
+				dispatcher.forward(request, response);
+			}
+			else {
+				request.setAttribute("content",serviceProvider.findByCategories(category));
+				RequestDispatcher dispatcher=request.getRequestDispatcher("homePage.jsp");
+				dispatcher.forward(request, response);	
+					
+			}
+			
+		}
+		else {
+		 
+		
 		request.setAttribute("content",serviceProvider.getAll());
-		response.getWriter().print(serviceProvider.getAll());
+		
 		
 			RequestDispatcher dispatcher=request.getRequestDispatcher("homePage.jsp");
 			dispatcher.forward(request, response);	
 		
+		//else response.getWriter().print("No content Available");
+		
+		}
 	}
 
 	/**
