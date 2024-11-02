@@ -77,6 +77,62 @@ section{
 
 <c:set var="al" value="<%= al %>" />
 <script type="text/javascript">
+var getAllData=function(event){
+	
+        const id=event.target.id;
+        
+	window.location.href="ContentDetails?id="+encodeURIComponent(id);
+	
+	//window.location.href ="Controller"; 
+//	var req=new XMLHttpRequest();
+//	req.open("POST","Controller",true);
+//	req.onreadystatechange=function(){
+//		if(this.readyState==2 && this.status==400){
+//			alert(this.responseText);
+			
+//		}
+	//	req.send("category="+response);
+	//}
+	
+	 //alert("Div tag Clicked !");
+	 
+}
+
+
+
+function electronics(){
+    window.location.href="LogIn?category=electronic applainces";
+	
+	
+	//var httprequest=new XMLHttpRequest();
+    //httprequest.open("POST","Controller",true);
+    //httprequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //httprequest.onreadystatechange=function(){
+    	//if(this.readyState==4 && this.status==200)
+    		//alert("Successful");
+    	//document.getElementById("s").innerHTML=this.responseText;
+    //}
+    //httprequest.send("username=uday");
+    //alert("${name}");
+    
+}
+
+function homeApplainces(){
+    window.location.href="LogIn?category=home applainces";
+    }
+
+function garments(){
+	window.location.href="LogIn?category=garments";
+    }
+
+function home(){
+	window.location.href="LogIn";
+    }
+
+function cart(){
+	window.location.href="LogIn?category=cart";
+    }
+
 
 function fun(id,name,category){
     
@@ -92,7 +148,7 @@ function fun(id,name,category){
     
      parent.appendChild(child);
      parent.appendChild(child_1);
-     //parent.onclick=getAllData;
+     parent.onclick=getAllData;
     sect.appendChild(parent);
     }
     
